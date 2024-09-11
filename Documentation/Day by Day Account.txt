@@ -1,91 +1,59 @@
 Week (9/9 - 9/13)
 
 Tuesday (9/10)
-Team Member 1 (Zain):
-Task: Set up GitHub repository, initialized project structure.
-Hours: 1 hours.
-Team Member 2 (Mo):
-Task: Started implementing the game board and ship placement logic.
-Hours: 3 hours.
-Team Member 3 (Abdul):
-Task: Created initial draft of project documentation and outlined the plan for the game setup.
-Hours: 2 hours.
-Team Member 4 (Fewa):
-Task: Researched Python libraries for GUI implementation and tested Tkinter for potential use.
-Hours: 3 hours.
+All Team Members (Zain, Mo, Fewa, Abdul):
+Task: Team meeting with GTA
+Time: 20 minutes.
+All Team Members (Zain, Mo, Fewa, Abdul):
+Task: Group meeting to discuss team roles and plans for the project.
+Time: 1 hour 30 minutes.
+
 
 Wednesday (9/11)
-Alice:
-Task: Completed the ship placement feature, ensuring ships don't overlap.
-Hours: 4 hours.
-Bob:
-Task: Worked on turn-based gameplay logic, allowing players to fire at each other’s boards.
-Hours: 3 hours.
-Charlie:
-Task: Started implementing hit/miss logic and updating the player’s board view.
-Hours: 3 hours.
-Diana:
-Task: Continued testing GUI elements and started integrating basic GUI components.
-Hours: 4 hours.
+Team Member 1 (Zain):
+Task: Set up the GitHub repository, initialized the project structure, and started implementing ship placement logic.
+Time: 1 hour.
+Team Member 2 (Mo):
+Task: Developed the game board setup and basic turn-taking logic.
+Time: 3 hours.
+Team Member 3 (Fewa):
+Task: Drafted initial project documentation and outlined the gameplay structure.
+Time: 2 hours.
+Team Member 4 (Abdul):
+Task: Researched Python libraries for terminal implementation and looked into Tkinter for potential use.
+Time: 3 hours.
 
-Thursday(9/12)
-Alice:
-Task: Debugged ship placement logic, fixed edge cases related to board boundaries.
+
+Thursday (9/12)
+Zain:
+Task: Completed ship placement feature with boundary checks and ensured no overlap.
+Time: 4 hours.
+Mo:
+Task: Implemented firing logic, including hit/miss detection and input validation.
+Time: 3 hours.
+Fewa and Abdul:
+Task: Developed sinking ship detection, ensuring correct game-end conditions.
+Time: 3 hours.
+
+
+Friday (9/13)
+Mo:
+Task: Debugged the game setup and refactored code for better modularity.
 Hours: 3 hours.
-Bob:
-Task: Enhanced turn logic and implemented input validation for coordinates.
+Zain and Abdul:
+Task: Conducted full game testing, identified bugs, and worked on fixing gameplay issues.
 Hours: 2 hours.
-Charlie:
-Task: Worked on sinking ship detection and ensuring proper tracking of hits.
-Hours: 4 hours.
-Diana:
-Task: Designed and implemented the player’s view interface, showing their board and tracking shots fired.
-Hours: 5 hours.
-Thursday
-Alice:
-Task: Reviewed and refactored code for readability and modularity.
-Hours: 2 hours.
-Bob:
-Task: Wrote unit tests for the board setup and turn-taking functions.
-Hours: 3 hours.
-Charlie:
-Task: Finalized the sinking logic and updated the game end conditions.
-Hours: 3 hours.
-Diana:
-Task: Integrated GUI with backend logic for a seamless user experience.
-Hours: 4 hours.
-Friday
-Alice:
-Task: Finalized system documentation and updated GitHub with latest changes.
-Hours: 3 hours.
-Bob:
-Task: Conducted integration testing and fixed bugs related to input handling.
-Hours: 4 hours.
-Charlie:
-Task: Reviewed and improved code comments for clarity.
-Hours: 2 hours.
-Diana:
-Task: Polished the GUI, added final touches to the design, and fixed layout issues.
-Hours: 3 hours.
+Fewa:
+Task: Finalized documentation, improved code comments, and helped test the overall gameplay.
+Hours: 1 hour.
+
+
 Saturday
-Alice:
-Task: Ran full game simulations to test gameplay flow and identify any remaining bugs.
-Hours: 4 hours.
-Bob:
-Task: Updated test cases and documentation based on new code changes.
-Hours: 3 hours.
-Charlie:
-Task: Assisted with final testing and fixed minor issues in the code.
-Hours: 2 hours.
-Diana:
-Task: Prepared demo materials and practiced presenting the game flow.
-Hours: 3 hours.
-Sunday
-All Team Members (Alice, Bob, Charlie, Diana):
+All Team Members (Zain, Mo, Abdul, Fewa):
 Task: Final review meeting, ran through the demo, discussed last-minute adjustments, and committed the final code.
-Hours: 2 hours each.
+Hours: 2 hours.
 Summary:
-Total Hours for Alice: 20 hours
-Total Hours for Bob: 18 hours
-Total Hours for Charlie: 16 hours
-Total Hours for Diana: 22 hours
+Total Hours for Zain: 20 hours
+Total Hours for Mo: 18 hours
+Total Hours for Abdul: 16 hours
+Total Hours for Fewa: 22 hours
