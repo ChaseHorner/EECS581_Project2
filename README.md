@@ -1,58 +1,93 @@
-# Project 1: Battleship
+# Battleship Game
 
 This is a Battleship game where two players face off on 10x10 boards. Each player places their fleet of ships on their board and takes turns attempting to sink their opponent's ships. The game ends when one player successfully sinks all the opponent’s ships.
 
-Game Setup
+## **Game Setup**
 
-Board Size:
-The board is a 10x10 grid.
-Columns are labeled A-J, rows are labeled 1-10.
+### **Board Size:**
+- The board is a 10x10 grid.
+- Columns are labeled A-J, rows are labeled 1-10.
 
-Number of Ships:
-Players decide on how much ships to play with (1-5).
-Each player has the same number and size of ships.
+### **Number of Ships:**
+- Players decide on how many ships to play with (1-5).
+- Each player has the same number and size of ships.
 
-Ship Size:
-1 ship: 1x1
-2 ships: 1x1, 1x2
-3 ships: 1x1, 1x2, 1x3
-4 ships: 1x1, 1x2, 1x3, 1x4
-5 ships: 1x1, 1x2, 1x3, 1x4, 1x5
+### **Ship Size:**
+| Number of Ships | Ship Sizes             |
+|-----------------|------------------------|
+| 1 ship          | 1x1                    |
+| 2 ships         | 1x1, 1x2               |
+| 3 ships         | 1x1, 1x2, 1x3          |
+| 4 ships         | 1x1, 1x2, 1x3, 1x4     |
+| 5 ships         | 1x1, 1x2, 1x3, 1x4, 1x5|
 
-Ship Placement:
-Players secretly place their ships on the board.
-Ships can be placed either horizontally or vertically.
+### **Ship Placement:**
+- Players secretly place their ships on the board.
+- Ships can be placed either **horizontally** or **vertically**.
 
-Gameplay
+---
 
-Turns:
-Players alternate turns firing shots at their opponent’s board by choosing a coordinate (e.g., B3).
-The game informs whether the shot was a "hit" or a "miss".
+## **Gameplay**
 
-Sinking Ships:
-When all spaces of a ship have been hit, the ship is considered sunk.
+### **Turns:**
+- Players alternate turns firing shots at their opponent’s board by choosing a coordinate (e.g., B3).
+- The game informs whether the shot was a "hit" or a "miss".
 
-End Game:
-The game ends when one player has sunk all of their opponent's ships.
+### **Sinking Ships:**
+- When all spaces of a ship have been hit, the ship is considered sunk.
 
-Player Views
+### **End Game:**
+- The game ends when one player has sunk all of their opponent's ships.
 
-Own Board:
-Players see their own board, where ships are placed, and where their ships have been hit.
+---
 
-Opponent Board:
-Players track their shots on their opponent’s board, showing hits and misses.
-How to Run the Game
-Clone the repository from GitHub.
-Run the main script using your preferred platform.
-Follow the in-game prompts to choose the number of ships and place them.
-Take turns with another player firing shots at each other’s boards until the game is won.
-Code Structure
-Main Game Logic: Handles setup, player turns, and game outcomes.
-Board Class: Manages board setup, ship placement, and tracking shots.
-Player Class: Tracks player data like their ships and shot history.
-UI Module: Displays the board, takes user input, and updates the display after each shot.
+## **Player Views**
 
-Documentation
-The full system documentation is available in the documentation/ folder of the repository.
-Comments are provided throughout the code to explain the logic.
+### **Own Board:**
+- Players see their own board, where ships are placed, and where their ships have been hit.
+
+### **Opponent Board:**
+- Players track their shots on their opponent’s board, showing hits and misses.
+
+---
+
+## **How to Run the Game**
+
+1. Clone the repository from GitHub:
+    ```bash
+    git clone https://github.com/username/battleship-game.git
+    ```
+2. Navigate to the game directory:
+    ```bash
+    cd battleship-game
+    ```
+3. Run the main script:
+    ```bash
+    python main.py
+    ```
+4. Follow the in-game prompts to choose the number of ships and place them.
+5. Take turns with another player firing shots at each other's boards until the game is won.
+
+---
+
+## **Code Structure**
+
+### **Main Game Logic:**
+- Handles setup, player turns, and game outcomes.
+
+### **Board Class:**
+- Manages board setup, ship placement, and tracking shots.
+
+### **Player Class:**
+- Tracks player data like their ships and shot history.
+
+### **UI Module:**
+- Displays the board, takes user input, and updates the display after each shot.
+
+---
+
+## **Documentation**
+
+- The full system documentation is available in the `documentation/` folder of the repository.
+- Comments are provided throughout the code to explain the logic.
+
