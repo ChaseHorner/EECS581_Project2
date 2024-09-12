@@ -1,0 +1,44 @@
+Project: Battleship Game
+Team Members: Alice, Bob, Charlie, Diana
+Total Estimated Hours: 110 hours
+
+Team Member 1: Alice (Lead Developer)
+Estimated Hours: 28 hours
+
+Task	Estimated Hours
+GitHub Repository Setup	2 hours
+Implementing Ship Placement Logic	6 hours
+Debugging and Refactoring	5 hours
+Reviewing Code Structure and Modularity	4 hours
+Finalizing System Documentation	4 hours
+Testing and Final Adjustments	7 hours
+Team Member 2: Bob (Gameplay Developer)
+Estimated Hours: 30 hours
+
+Task	Estimated Hours
+Game Board Setup	4 hours
+Implementing Turn-Based Logic	6 hours
+Firing Logic and Input Validation	6 hours
+Integration Testing and Bug Fixing	8 hours
+Writing Unit Tests	4 hours
+Final Integration and Review	2 hours
+Team Member 3: Charlie (Documentation & Testing)
+Estimated Hours: 24 hours
+
+Task	Estimated Hours
+Drafting Initial Project Documentation	3 hours
+Outlining Gameplay Structure	2 hours
+Developing Sinking Ship Detection Logic	5 hours
+Reviewing and Improving Code Comments	4 hours
+Testing Gameplay Features	6 hours
+Finalizing and Reviewing Documentation	4 hours
+Team Member 4: Diana (GUI Developer)
+Estimated Hours: 28 hours
+
+Task	Estimated Hours
+Researching Python GUI Options	3 hours
+Designing Initial Interface Layout	4 hours
+Integrating GUI Components with Backend	8 hours
+Refining GUI Based on Feedback	5 hours
+Testing User Interface and Usability	4 hours
+Preparing Demo and Final Presentation	4 hours
