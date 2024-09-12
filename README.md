@@ -90,9 +90,3 @@ This is a Battleship game where two players face off on 10x10 boards. Each playe
 
 - The full system documentation is available in the `documentation/` folder of the repository.
 - Comments are provided throughout the code to explain the logic.
-
-
----
-
-## **Repository Link**
-[GitHub Repository](https://github.com/ZainGhosheh/Battleship)
