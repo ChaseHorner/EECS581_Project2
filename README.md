@@ -55,11 +55,11 @@ This is a Battleship game where two players face off on 10x10 boards. Each playe
 
 1. Clone the repository from GitHub:
     ```bash
-    git clone https://github.com/username/battleship-game.git
+    git clone https://github.com/ZainGhosheh/Battleship.git
     ```
 2. Navigate to the game directory:
     ```bash
-    cd battleship-game
+    cd battleship
     ```
 3. Run the main script:
     ```bash
@@ -91,3 +91,8 @@ This is a Battleship game where two players face off on 10x10 boards. Each playe
 - The full system documentation is available in the `documentation/` folder of the repository.
 - Comments are provided throughout the code to explain the logic.
 
+
+---
+
+## **Repository Link**
+[GitHub Repository](https://github.com/ZainGhosheh/Battleship)
