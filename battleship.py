@@ -165,18 +165,22 @@ def play_game():
 
     # Game loop
     while True:
-        time.sleep(1)
+        time.sleep(.5)
         os.system('clear')
+        player1.display_boards()
         player1.display_tboards()
         player1.take_turn(player2)
+        time.sleep(1.5)
+        os.system('clear')  
         if player2.board.all_ships_sunk():
             print(player1.display_tboards())
             print(f"{player1.name} wins!")
-
             break
-
+        player2.display_boards()
         player2.display_tboards()
         player2.take_turn(player1)
+        time.sleep(1.5)
+        os.system('clear')  
         if player1.board.all_ships_sunk():
             print(player2.display_tboards())
             print(f"{player2.name} wins!")
