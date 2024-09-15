@@ -63,7 +63,7 @@ This is a Battleship game where two players face off on 10x10 boards. Each playe
     ```
 3. Run the main script:
     ```bash
-    python main.py
+    python3 main.py
     ```
 4. Follow the in-game prompts to choose the number of ships and place them.
 5. Take turns with another player firing shots at each other's boards until the game is won.
