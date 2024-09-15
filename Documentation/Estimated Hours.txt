@@ -1,9 +1,18 @@
 Project: Battleship Game
-Team Members: Alice, Bob, Charlie, Diana
+Team Members: Abdulahi, Mahgoub, Olufewa, Zain
 Total Estimated Hours: 110 hours
 
-Team Member 1: Alice (Lead Developer)
-Estimated Hours: 28 hours
+Team Member 1: Abdulahi  
+Estimated Hours: 
+
+Team Member 2: Olufewa
+Estimated Hours: 
+
+Team Member 3: Mahgoub
+Estimated Hours: 
+
+Team Member 4: Zain
+Estimated Hours: 
 
 Task	Estimated Hours
 GitHub Repository Setup	2 hours
