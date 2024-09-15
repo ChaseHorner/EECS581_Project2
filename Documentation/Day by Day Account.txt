@@ -1,59 +1,106 @@
 Week (9/9 - 9/13)
 
 Tuesday (9/10)
-All Team Members (Zain, Mo, Fewa, Abdul):
+All Team Members (Zain, Abdulahi, Olufewa, Mahgoub):
 Task: Team meeting with GTA
-Time: 20 minutes.
-All Team Members (Zain, Mo, Fewa, Abdul):
-Task: Group meeting to discuss team roles and plans for the project.
-Time: 1 hour 30 minutes.
+Time: 20 minutes
+
+All Team Members (Zain, Abdulahi, Olufewa, Mahgoub):
+Task: Group meeting to discuss team roles and project plans
+Time: 1 hour 30 minutes
 
 
 Wednesday (9/11)
 Team Member 1 (Zain):
-Task: Set up the GitHub repository, initialized the project structure, and started implementing ship placement logic.
-Time: 1 hour.
-Team Member 2 (Mo):
-Task: Developed the game board setup and basic turn-taking logic.
-Time: 3 hours.
-Team Member 3 (Fewa):
-Task: Drafted initial project documentation and outlined the gameplay structure.
-Time: 2 hours.
-Team Member 4 (Abdul):
-Task: Researched Python libraries for terminal implementation and looked into Tkinter for potential use.
-Time: 3 hours.
+Task: GitHub repository setup, initialized project structure
+Time: 1 hour
+
+Team Member 2 (Mahgoub):
+Task: Game board setup
+Time: 2 hours
+
+Team Member 3 (Olufewa):
+Task: Drafted initial project documentation, outlined gameplay structure
+Time: 2 hours
+
+Team Member 4 (Abdulahi):
+Task: Researched Python libraries
+Time: 1 hour
+
 
 
 Thursday (9/12)
 Zain:
-Task: Completed ship placement feature with boundary checks and ensured no overlap.
-Time: 4 hours.
-Mo:
-Task: Implemented firing logic, including hit/miss detection and input validation.
-Time: 3 hours.
-Fewa and Abdul:
-Task: Developed sinking ship detection, ensuring correct game-end conditions.
-Time: 3 hours.
+Task: Debugging and refactoring
+Time: 2 hours
+
+Mahgoub:
+Task: Implementing turn-based logic
+Time: 2 hours
+
+Olufewa:
+Task: Developed sinking ship detection logic
+Time: 1.5 hours
+
+Abdulahi:
+Task: Designing initial interface
+Time: 2 hours
+
 
 
 Friday (9/13)
-Mo:
-Task: Debugged the game setup and refactored code for better modularity.
-Hours: 3 hours.
-Zain and Abdul:
-Task: Conducted full game testing, identified bugs, and worked on fixing gameplay issues.
-Hours: 2 hours.
-Fewa:
-Task: Finalized documentation, improved code comments, and helped test the overall gameplay.
-Hours: 1 hour.
+Mahgoub:
+Task: Firing logic and input validation
+Time: 1 hour
+
+Zain:
+Task: Reviewing code structure and modularity
+Time: 2 hours
+
+Abdulahi:
+Task: Testing gameplay and bug fixing
+Time: 2 hours
+
+Olufewa:
+Task: Reviewing and improving code comments
+Time: 1 hour
 
 
-Saturday
-All Team Members (Zain, Mo, Abdul, Fewa):
-Task: Final review meeting, ran through the demo, discussed last-minute adjustments, and committed the final code.
-Hours: 2 hours.
+
+Saturday (9/14)
+All Team Members (Zain, Abdulahi, Olufewa, Mahgoub):
+Task: Final review meeting, ran through demo, committed final code
+Time: 2 hours
+
 Summary:
-Total Hours for Zain: 20 hours
-Total Hours for Mo: 18 hours
-Total Hours for Abdul: 16 hours
-Total Hours for Fewa: 22 hours
+
+-Total Hours for Zain: 10 hours
+GitHub repository setup: 1 hour
+Debugging and refactoring: 2 hours
+Reviewing code structure and modularity: 2 hours
+Final review meeting: 2 hours
+Testing and final adjustments: 3 hours
+
+
+-Total Hours for Mahgoub: 9 hours
+Game board setup: 2 hours
+Implementing turn-based logic: 2 hours
+Firing logic and input validation: 1 hour
+Integration testing and bug fixing: 2 hours
+Final integration and review: 2 hours
+
+-Total Hours for Abdulahi: 9 hours
+Researched Python libraries: 1 hour
+Designing initial interface: 2 hours
+Testing gameplay and bug fixing: 2 hours
+Implementing ship placement logic: 1 hour
+Final optimization and usability: 2 hours
+Final review meeting: 1 hour
+
+-Total Hours for Olufewa: 9.5 hours
+Drafting initial project documentation: 2 hours
+Outlining gameplay structure: 2 hours
+Developing sinking ship detection logic: 1.5 hours
+Reviewing and improving code comments: 1 hour
+Testing gameplay features: 2 hours
+Finalizing and reviewing documentation: 1 hour
