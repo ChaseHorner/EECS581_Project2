@@ -1,53 +1,40 @@
 Project: Battleship Game
 Team Members: Abdulahi, Mahgoub, Olufewa, Zain
-Total Estimated Hours: 110 hours
+Total Estimated Hours: 37.5
+
 
 Team Member 1: Abdulahi  
-Estimated Hours: 
+Estimated Hours: 9 hours
+Researching Python Libraries:	1 hour
+Designing Initial Interface : 2 hours
+Testing Gameplay and bug fixing: 2 hours
+Implementing Ship Placement Logic	1 hours
+Final Optimization and usability: 2
 
 Team Member 2: Olufewa
-Estimated Hours: 
+Estimated Hours: 9.5 hours
+Drafting Initial Project Documentation	2 hours
+Outlining Gameplay Structure	2 hours
+Developing Sinking Ship Detection Logic	1.5 hours
+Reviewing and Improving Code Comments	1 hours
+Testing Gameplay Features	2 hours
+Finalizing and Reviewing Documentation	1 hours
 
 Team Member 3: Mahgoub
-Estimated Hours: 
+Estimated Hours: 9 hours
+Game Board Setup	2 hours
+Implementing Turn-Based Logic	2 hours
+Firing Logic and Input Validation	1 hours
+Integration Testing and Bug Fixing	2 hours
+Final Integration and Review	2 hours
+
 
 Team Member 4: Zain
-Estimated Hours: 
+Estimated Hours: 10 Hours
+GitHub Repository Setup	1 hours
+Debugging and Refactoring	2 hours
+Reviewing Code Structure and Modularity	2 hours
+Finalizing System Documentation	2 hours
+Testing and Final Adjustments	3 hours
 
-Task	Estimated Hours
-GitHub Repository Setup	2 hours
-Implementing Ship Placement Logic	6 hours
-Debugging and Refactoring	5 hours
-Reviewing Code Structure and Modularity	4 hours
-Finalizing System Documentation	4 hours
-Testing and Final Adjustments	7 hours
-Team Member 2: Bob (Gameplay Developer)
-Estimated Hours: 30 hours
 
-Task	Estimated Hours
-Game Board Setup	4 hours
-Implementing Turn-Based Logic	6 hours
-Firing Logic and Input Validation	6 hours
-Integration Testing and Bug Fixing	8 hours
-Writing Unit Tests	4 hours
-Final Integration and Review	2 hours
-Team Member 3: Charlie (Documentation & Testing)
-Estimated Hours: 24 hours
-
-Task	Estimated Hours
-Drafting Initial Project Documentation	3 hours
-Outlining Gameplay Structure	2 hours
-Developing Sinking Ship Detection Logic	5 hours
-Reviewing and Improving Code Comments	4 hours
-Testing Gameplay Features	6 hours
-Finalizing and Reviewing Documentation	4 hours
-Team Member 4: Diana (GUI Developer)
-Estimated Hours: 28 hours
-
-Task	Estimated Hours
-Researching Python GUI Options	3 hours
-Designing Initial Interface Layout	4 hours
-Integrating GUI Components with Backend	8 hours
-Refining GUI Based on Feedback	5 hours
-Testing User Interface and Usability	4 hours
-Preparing Demo and Final Presentation	4 hours
