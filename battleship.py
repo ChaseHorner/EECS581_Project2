@@ -1,3 +1,14 @@
+"""
+Authors: Zain W Ghosheh, Abdulahi Mohamed, Olufewa Alonge, Mahgoub Husien.
+Date: 09-11-2024
+Assignment: EECS 581 Project 1
+Description: Builds the game battleship which can be played on the terminal with all the required functionality.
+Inputs: none
+Output: Battleship game.
+Collaborators/Other Sources:
+"""
+
+
 import time
 import os
 
