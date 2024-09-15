@@ -87,7 +87,10 @@ class Player:
                 if 0 <= col < GRID_SIZE and 0 <= row < GRID_SIZE:
                     result = opponent.board.receive_attack(row, col)
                     print(result)  # Announce hit or miss
-                    if "Hit" in result:
+                    if result == "Already attacked this spot.":
+                        print("Try again.")
+                        continue  # Allow the player to take another turn
+                    elif "Hit" in result:
                         self.tracking_board[row][col] = 'X'  # Mark hit
                     elif "Miss" in result:
                         self.tracking_board[row][col] = 'O'  # Mark miss
