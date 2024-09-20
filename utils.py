@@ -5,6 +5,9 @@ MAX_SHIPS = 5
 def letter_to_index(letter):
     return COLUMN_LETTERS.index(letter.upper())
 
+def index_to_letter(num):
+    return chr(num + ord("A"))
+
 def print_grid(grid):
     print("  " + " ".join(COLUMN_LETTERS))  # Print column headers
     for i, row in enumerate(grid):
