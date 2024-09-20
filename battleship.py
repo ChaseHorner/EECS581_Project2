@@ -61,7 +61,7 @@ def play_game():
                     print(f"Invalid input. Please choose between 1 and 3.")
             except ValueError:
                 print("Please enter a number between 1 and 3.")
-        AIPlayer("AI", difficulty)
+        player2 = AIPlayer("AI", difficulty)
     else:
         player2 = Player("Player 2")
 
