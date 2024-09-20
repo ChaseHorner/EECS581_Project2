@@ -9,6 +9,7 @@ Collaborators/Other Sources: NONE
 """
 
 import time
+import random
 
 from player import Player
 
@@ -27,6 +28,7 @@ class AIPlayer(Player):
         """
         row, col = self._get_shot_coord(opponent)
         result = opponent.board.receive_attack(row, col)
+        print(f"AI targeted ({index_to_letter(col)}, {row + 1}) | RESULT = {result}")
         if "Hit" in result:
             self.tracking_board[row][col] = 'X'  # Mark hit
         elif "Miss" in result:
@@ -51,7 +53,15 @@ class AIPlayer(Player):
     def _easy_shot(self):
         """Internal function for calculating shot if difficulty is "easy" (or 0)
         """
-        pass
+        row = random.choice(range(0,10))
+        col = random.choice(range(0,10))
+        while self.tracking_board[row][col] != "~":
+            row = random.choice(range(0,10))
+            col = random.choice(range(0,10))
+
+        return row, col
+
+
 
     def _medium_shot(self):
         """Internal function for calculating shot if difficulty is "medium" (or 1)
