@@ -1,5 +1,5 @@
 """
-Authors: Michael Stang, Zain W Ghosheh, Abdulahi Mohamed, Olufewa Alonge, Mahgoub Husien
+Authors: Michael Stang, Chase Horner, Zain W Ghosheh, Abdulahi Mohamed, Olufewa Alonge, Mahgoub Husien
 Date: 09-20-2024
 Assignment: EECS 581 Project 2
 Description: A class for each player
@@ -55,3 +55,7 @@ class Player:
     def display_boards(self):
         print(f"{self.name}'s Board:")
         print_grid(self.board.grid)
+
+    #For Holden
+    def random_placement(self):
+        pass
