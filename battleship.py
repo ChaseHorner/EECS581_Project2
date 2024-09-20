@@ -1,7 +1,7 @@
 """
-Authors: Zain W Ghosheh, Abdulahi Mohamed, Olufewa Alonge, Mahgoub Husien.
+Authors: Michael Stang, Zain W Ghosheh, Abdulahi Mohamed, Olufewa Alonge, Mahgoub Husien.
 Date: 09-11-2024
-Assignment: EECS 581 Project 1
+Assignment: EECS 581 Project 2
 Description: Builds the game battleship which can be played on the terminal with all the required functionality.
 Inputs: none
 Output: Battleship game.
@@ -12,118 +12,23 @@ Collaborators/Other Sources:
 import time
 import os
 
+from player import Player
+from ai import AIPlayer
+from board import Board
+from ship import Ship
+
 # Constants
 GRID_SIZE = 10
 COLUMN_LETTERS = 'ABCDEFGHIJ'
 MAX_SHIPS = 5
 
-# Helper functions to convert coordinates
-def letter_to_index(letter):
-    return COLUMN_LETTERS.index(letter.upper())
-
-def print_grid(grid):
-    print("  " + " ".join(COLUMN_LETTERS))  # Print column headers
-    for i, row in enumerate(grid):
-        print(f"{i+1:2} " + " ".join(row))
-
-# Ship class to manage individual ship's state
-class Ship:
-    def __init__(self, size):
-        self.size = size
-        self.hits = 0
-        self.coordinates = [] 
-
-    def is_sunk(self):
-        return self.hits >= self.size
-
-# Board class to handle ship placement and attacks
-class Board:
-    def __init__(self):
-        self.grid = [['~' for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
-        self.ships = []
-
-    def place_ship(self, ship, start_row, start_col, orientation):
-        coordinates = []
-        for i in range(ship.size):
-            if orientation == 'H':
-                col = start_col + i
-                if col >= GRID_SIZE or self.grid[start_row][col] != '~':
-                    return False
-                coordinates.append((start_row, col))
-            elif orientation == 'V':
-                row = start_row + i
-                if row >= GRID_SIZE or self.grid[row][start_col] != '~':
-                    return False
-                coordinates.append((row, start_col))
-
-        # Place ship after validation
-        for row, col in coordinates:
-            self.grid[row][col] = 'S'
-        ship.coordinates = coordinates
-        self.ships.append(ship)
-        return True
-
-    def receive_attack(self, row, col):
-        if self.grid[row][col] == 'S':
-            self.grid[row][col] = 'X'  # Hit
-            for ship in self.ships:
-                if (row, col) in ship.coordinates:
-                    ship.hits += 1
-                    if ship.is_sunk():
-                        return "Hit! Ship sunk!"
-                    return "Hit!"
-        elif self.grid[row][col] == '~':
-            self.grid[row][col] = 'O'  # Miss
-            return "Miss!\n"
-        return "Already attacked this spot."
-
-    def all_ships_sunk(self):
-        return all(ship.is_sunk() for ship in self.ships)
-
-# Player class to manage player turns
-class Player:
-    def __init__(self, name):
-        self.name = name
-        self.board = Board()
-        self.tracking_board = [['~' for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
-
-    def take_turn(self, opponent):
-        while True:
-            try:
-                time.sleep(1)
-                target = input(f"{self.name}, enter target (e.g. A1): ")
-                col = letter_to_index(target[0])
-                row = int(target[1:]) - 1
-
-                if 0 <= col < GRID_SIZE and 0 <= row < GRID_SIZE:
-                    result = opponent.board.receive_attack(row, col)
-                    print(result)  # Announce hit or miss
-                    if result == "Already attacked this spot.":
-                        print("Try again.")
-                        continue  # Allow the player to take another turn
-                    elif "Hit" in result:
-                        self.tracking_board[row][col] = 'X'  # Mark hit
-                    elif "Miss" in result:
-                        self.tracking_board[row][col] = 'O'  # Mark miss
-                    break
-                else:
-                    print("Invalid input. Try again.")
-            except (ValueError, IndexError):
-                print("Invalid input. Please enter a valid coordinate (e.g., A1).")
-
-    def display_tboards(self):
-        print(f"{self.name}'s Tracking Board:")
-        print_grid(self.tracking_board)
-
-    def display_boards(self):
-        print(f"{self.name}'s Board:")
-        print_grid(self.board.grid)
+from utils import *
 
 # Main game loop
 def play_game():
     print("Welcome to Battleship!")
     player1 = Player("Player 1")
-    player2 = Player("Player 2")
+    player2 = AIPlayer("Player 2", 1)
 
     # Let Player 1 choose the number of ships (between 1 and 5)
     while True:
@@ -178,8 +83,9 @@ def play_game():
     while True:
         time.sleep(.5)
         os.system('clear')
-        player1.display_boards()
-        player1.display_tboards()
+        if not isinstance(player1, AIPlayer):
+            player1.display_boards()
+            player1.display_tboards()
         player1.take_turn(player2)
         time.sleep(1.5)
         os.system('clear')  
@@ -187,8 +93,9 @@ def play_game():
             print(player1.display_tboards())
             print(f"{player1.name} wins!")
             break
-        player2.display_boards()
-        player2.display_tboards()
+        if not isinstance(player2, AIPlayer):
+            player2.display_boards()
+            player2.display_tboards()
         player2.take_turn(player1)
         time.sleep(1.5)
         os.system('clear')  
