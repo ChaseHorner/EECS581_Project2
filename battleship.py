@@ -28,7 +28,7 @@ from utils import *
 def play_game():
     print("Welcome to Battleship!")
     player1 = Player("Player 1")
-    player2 = AIPlayer("Player 2", 1)
+    player2 = AIPlayer("Player 2", 0)
 
     # Let Player 1 choose the number of ships (between 1 and 5)
     while True:
