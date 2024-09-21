@@ -72,10 +72,13 @@ class AIPlayer(Player):
     def _hard_shot(self, opponent):
         """Internal function for calculating shot if difficulty is "hard" (or 3)
         """
+        #access opponents board
         opponent_board = opponent.board
+        #iterate through all rows and columns
         rows = range(10)
         cols = range(10)        
         for row in rows:
             for col in cols:
+                #If there's a ship, return those coordinates (it will then be "hit" and not a "S" next time)
                 if opponent_board.grid[row][col] == 'S':
                     return(row, col)
