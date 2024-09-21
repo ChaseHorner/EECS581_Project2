@@ -1,5 +1,5 @@
 """
-Authors: Michael Stang
+Authors: Michael Stang, Chase Horner
 Date: 09-20-2024
 Assignment: EECS 581 Project 2
 Description: A class for an AI player with multiple difficulty modes
@@ -29,6 +29,7 @@ class AIPlayer(Player):
         row, col = self._get_shot_coord(opponent)
         result = opponent.board.receive_attack(row, col)
         print(f"AI targeted ({index_to_letter(col)}, {row + 1}) | RESULT = {result}")
+        time.sleep(1.5)
         if "Hit" in result:
             self.tracking_board[row][col] = 'X'  # Mark hit
         elif "Miss" in result:
@@ -40,18 +41,18 @@ class AIPlayer(Player):
         """ Internal function to calculate coord that AI will fire at
         """
         match self.difficulty:
-            case 0:
-                return self._easy_shot()
             case 1:
-                return self._medium_shot()
+                return self._easy_shot()
             case 2:
+                return self._medium_shot()
+            case 3:
                 return self._hard_shot(opponent)
             case _:
                 raise ValueError(f"AIPlayer._get_shot_coord(): Invalid difficulty int {self.difficulty}")
             
 
     def _easy_shot(self):
-        """Internal function for calculating shot if difficulty is "easy" (or 0)
+        """Internal function for calculating shot if difficulty is "easy" (or 1)
         """
         row = random.choice(range(0,10))
         col = random.choice(range(0,10))
@@ -64,11 +65,17 @@ class AIPlayer(Player):
 
 
     def _medium_shot(self):
-        """Internal function for calculating shot if difficulty is "medium" (or 1)
+        """Internal function for calculating shot if difficulty is "medium" (or 2)
         """
         pass
 
     def _hard_shot(self, opponent):
-        """Internal function for calculating shot if difficulty is "hard" (or 2)
+        """Internal function for calculating shot if difficulty is "hard" (or 3)
         """
-        pass
+        opponent_board = opponent.board
+        rows = range(10)
+        cols = range(10)        
+        for row in rows:
+            for col in cols:
+                if opponent_board.grid[row][col] == 'S':
+                    return(row, col)

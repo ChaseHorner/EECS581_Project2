@@ -54,7 +54,7 @@ def play_game():
     if num_players == 1: 
         while True:
             try:
-                difficulty = int(input("Choose the difficulty (1-3): "))
+                difficulty = int(input("Choose the difficulty:\nEasy = 1, Medium = 2, Hard = 3: "))
                 if 1 <= difficulty <= 3:
                     break
                 else:
@@ -96,12 +96,15 @@ def play_game():
                     while True:
                         try:
                             start = input(f"Enter starting position for ship of size {size} (Letters: A-J Numbers: 1-10): ")
-                            orientation = input("Enter orientation (H for horizontal, V for vertical): ").upper()
-                            while True:
-                                if orientation not in ['H', 'V']:
-                                    orientation = input("Invalid input. Enter H for horizontal or V for vertical: ").upper()
-                                else:
-                                    break
+                            if size != 1:    
+                                orientation = input("Enter orientation (H for horizontal, V for vertical): ").upper()
+                                while True:
+                                    if orientation not in ['H', 'V']:
+                                        orientation = input("Invalid input. Enter H for horizontal or V for vertical: ").upper()
+                                    else:
+                                        break
+                            else:
+                                orientation = 'H'
                             col = letter_to_index(start[0])
                             row = int(start[1:]) - 1
 
@@ -126,6 +129,7 @@ def play_game():
         time.sleep(1.5)
         os.system('clear')  
         if player2.board.all_ships_sunk():
+            player1.display_boards()
             player1.display_tboards()
             print(f"{player1.name} wins!")
             break
@@ -136,6 +140,7 @@ def play_game():
         time.sleep(1.5)
         os.system('clear')  
         if player1.board.all_ships_sunk():
+            player2.display_boards()
             player2.display_tboards()
             print(f"{player2.name} wins!")
             break

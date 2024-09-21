@@ -9,6 +9,7 @@ Collaborators/Other Sources: NONE
 """
 
 from board import Board
+from ship import Ship
 import time
 
 from utils import *
@@ -58,4 +59,5 @@ class Player:
 
     #For Holden
     def random_placement(self):
-        pass
+        #added for testing purposes
+        self.board.place_ship(Ship(1), 1, 9, 'H')
