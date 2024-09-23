@@ -113,6 +113,8 @@ class AIPlayer(Player):
             if check_coord_valid(coord[0], coord[1]):
                 if self.tracking_board[coord[0]][coord[1]] == "~":
                     return coord[0], coord[1]
+        
+        return self._easy_shot()
 
         
 
