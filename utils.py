@@ -12,3 +12,6 @@ def print_grid(grid):
     print("  " + " ".join(COLUMN_LETTERS))  # Print column headers
     for i, row in enumerate(grid):
         print(f"{i+1:2} " + " ".join(row))
+
+def check_coord_valid(row, col):
+    return (row >= 0 and row <= 9) and (col >= 0 and col <= 9)

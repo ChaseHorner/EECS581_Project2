@@ -57,7 +57,7 @@ class Board:
             self.grid[row][col] = 'O'  # Miss
             return "Miss!\n"
         return "Already attacked this spot."
-
+    
     def all_ships_sunk(self):
         return all(ship.is_sunk() for ship in self.ships)
     
