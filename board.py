@@ -19,14 +19,18 @@ class Board:
         self.ships = []
 
     def place_ship(self, ship, start_row, start_col, orientation):
+        """
+        This method allows for a ship to be placed on a board object. 
+        It accepts a ship object, two ints, and a string H or V respectively
+        """
         coordinates = []
-        for i in range(ship.size):
+        for i in range(ship.size):  # Validates placement for horizontal placement
             if orientation == 'H':
                 col = start_col + i
                 if col >= GRID_SIZE or self.grid[start_row][col] != '~':
                     return False
                 coordinates.append((start_row, col))
-            elif orientation == 'V':
+            elif orientation == 'V':    # Validates placemtn for vertical placement
                 row = start_row + i
                 if row >= GRID_SIZE or self.grid[row][start_col] != '~':
                     return False
@@ -40,6 +44,7 @@ class Board:
         return True
 
     def receive_attack(self, row, col):
+        """This method allows for a ship on a board to be attacked"""
         if self.grid[row][col] == 'S':
             self.grid[row][col] = 'X'  # Hit
             for ship in self.ships:
@@ -55,3 +60,4 @@ class Board:
 
     def all_ships_sunk(self):
         return all(ship.is_sunk() for ship in self.ships)
+    

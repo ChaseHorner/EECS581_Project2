@@ -1,5 +1,5 @@
 """
-Authors: Michael Stang, Chase Horner, Zain W Ghosheh, Abdulahi Mohamed, Olufewa Alonge, Mahgoub Husien.
+Authors: Holden Vail, Michael Stang, Chase Horner, Zain W Ghosheh, Abdulahi Mohamed, Olufewa Alonge, Mahgoub Husien.
 Date: 09-11-2024
 Assignment: EECS 581 Project 2
 Description: Builds the game battleship which can be played on the terminal with all the required functionality.
@@ -27,6 +27,7 @@ from utils import *
 # Main game loop
 def play_game():
     print("Welcome to Battleship!")
+    player1 = Player("Player 1")
 
     # Let Player 1 choose the number of players
     while True:
@@ -50,7 +51,7 @@ def play_game():
         except ValueError:
             print("Please enter a number between 1 and 5.")
 
-    player1 = Player("Player 1")
+    # If applicable, let Player 1 choose the difficulty of AI to play against
     if num_players == 1: 
         while True:
             try:
@@ -68,7 +69,7 @@ def play_game():
     # Ship placement phase
     for player in [player1, player2]:
         if player.name == "AI":
-            player.random_placement()
+            player.random_placement(num_ships)  # Place ships randomly for AI
         else:
             if player.name == "Player 2":
                 os.system('clear')
@@ -82,14 +83,15 @@ def play_game():
                         print("Invalid input. Please press Enter to continue...")
 
             print(f"{player.name}, place your ships!")
-            placement = input(f"Random or Manual ship placement (R or M): ").upper()
+            placement = input(f"Random or Manual ship placement (R or M): ").upper()    # Allows Player 1 to place ships randomly
             while True:
                 if placement not in ['R', 'M']:
                     placement = input("Invalid input. Enter R for random or M for manual: ").upper()
                 else:
                     break
             if placement == 'R':
-                player.random_placement()
+                player.random_placement(num_ships)
+            # Begin manual ship placement 
             else:
                 for size in range(1, num_ships + 1):
                     ship = Ship(size)
