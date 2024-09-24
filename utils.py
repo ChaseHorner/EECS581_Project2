@@ -9,7 +9,7 @@ def index_to_letter(num):
     return chr(num + ord("A"))
 
 def print_grid(grid):
-    print("  " + " ".join(COLUMN_LETTERS))  # Print column headers
+    print("   " + " ".join(COLUMN_LETTERS))  # Print column headers
     for i, row in enumerate(grid):
         print(f"{i+1:2} " + " ".join(row))
 

@@ -17,6 +17,7 @@ class Board:
     def __init__(self):
         self.grid = [['~' for _ in range(GRID_SIZE)] for _ in range(GRID_SIZE)]
         self.ships = []
+        self.powerups = []
 
     def place_ship(self, ship, start_row, start_col, orientation):
         """
@@ -43,9 +44,27 @@ class Board:
         self.ships.append(ship)
         return True
 
+    def place_powerup(self, powerup, row, col):
+        """
+        Places a powerup object at row, col
+        """
+        # Validate coordinates given
+        if self.grid[row][col] != '~':
+            return False
+
+        # Place powerup after validation
+        self.grid[row][col] = powerup.variety
+        powerup.coordinates = [row, col]
+        self.powerups.append(powerup)
+        return True
+
     def receive_attack(self, row, col):
         """This method allows for a ship on a board to be attacked"""
-        if self.grid[row][col] == 'S':
+        hit_letters = ['S']
+        for powerup in self.powerups:
+            hit_letters.append(powerup.variety)
+
+        if self.grid[row][col] in hit_letters:
             self.grid[row][col] = 'X'  # Hit
             for ship in self.ships:
                 if (row, col) in ship.coordinates:
@@ -53,9 +72,16 @@ class Board:
                     if ship.is_sunk():
                         return "Hit! Ship sunk!"
                     return "Hit!"
+            
+            for powerup in self.powerups:
+                if [row, col] == powerup.coordinates:
+                    powerup.hit = True
+                    return f"Hit a {powerup.variety} Powerup!"
+
         elif self.grid[row][col] == '~':
             self.grid[row][col] = 'O'  # Miss
             return "Miss!\n"
+
         return "Already attacked this spot."
     
     def all_ships_sunk(self):

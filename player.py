@@ -71,3 +71,17 @@ class Player:
                 col = random.randint(0, GRID_SIZE - 1)
                 orientation = random.choice(["H", "V"])
                 success = self.board.place_ship(ship, row, col, orientation)    # Attemps placement
+
+    def place_powerups(self, powerup_list):
+        """Will place the powerups given randomly and safely on the board"""
+        for powerup in powerup_list:
+            success = False
+            # Place powerups randomly until it sticks
+            while success == False:
+                # Choose some coordinates
+                row = random.randint(0, GRID_SIZE - 1)
+                col = random.randint(0, GRID_SIZE - 1)
+                # Try placing the powerup there
+                success = self.board.place_powerup(powerup, row, col)
+            
+

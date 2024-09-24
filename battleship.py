@@ -16,6 +16,7 @@ from player import Player
 from ai import AIPlayer
 from board import Board
 from ship import Ship
+from powerup import Powerup
 
 # Constants
 GRID_SIZE = 10
@@ -65,6 +66,17 @@ def play_game():
         player2 = AIPlayer("AI", difficulty)
     else:
         player2 = Player("Player 2")
+
+    
+    # Ask if they want to play with powerups
+    while True:
+        do_powerups = input("Play with powerups enabled (y/n)?: ").lower()
+        if do_powerups in ("y", "n"):
+            break
+        else:
+            print("Please enter y or n")
+
+    do_powerups = do_powerups == "y"
 
     # Ship placement phase
     for player in [player1, player2]:
@@ -119,6 +131,13 @@ def play_game():
                                 print("Invalid ship placement. Try again.")
                         except (ValueError, IndexError):
                             print("Invalid input. Try again.")
+
+    # Powerup placement if applicable
+    if do_powerups:
+        powerups_p1 = [Powerup("B"), Powerup("D"), Powerup("T")]
+        powerups_p2 = [Powerup("B"), Powerup("D"), Powerup("T")]
+        player1.place_powerups(powerups_p1)
+        player2.place_powerups(powerups_p2)
 
     # Game loop
     while True:
