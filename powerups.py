@@ -2,19 +2,20 @@
 Author: Pierce Lane
 Date: 09-24-2024
 Assignment: EECS 581 Project 2
-Description: A class for powerups
+Description: A few classes for powerups
 Collaborators/Other Sources: NONE
 """
 
+import os
+from time import sleep
 # Import abstract base classes
 from abc import ABC, abstractmethod
 
+# grab our utils
 from utils import *
 
-import os
-from time import sleep
 
-# need AIPlayer to prevent printing when they hit a powerup
+# need this to prevent printing when they hit a powerup
 from ai import AIPlayer
 
 # Powerup interface
