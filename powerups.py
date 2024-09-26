@@ -48,7 +48,7 @@ class Powerup(ABC):
     def print_hitme(self, us):
         """
         CONCRETE
-        Function to print to whoever hit us that we've been hit!
+        Helper function to print to whoever hit us that we've been hit!
         """
 
         # make sure we're not an AI
@@ -56,6 +56,35 @@ class Powerup(ABC):
             # print out the thing and wait a sec
             print(f"You hit a{self.an_char} {self.name} Powerup!!")
             sleep(Powerup.long_delay)
+
+    def init_do_power(self, row, col, us):
+        """
+        CONCRETE
+        Helper function to run at the start of do_power
+        """
+        # error case, we should never be hit twice
+        if self.hit:
+            raise NameError("Powerup hit twice")
+
+        # update trackign board with our original hit
+        us.check_result("Hit", row, col)
+
+        # print that we hit (conditional on if we're an AIPlayer)
+        self.print_hitme(us)
+
+        # print our boards now that they've been updated
+        self.print_boards(us)
+
+
+    def print_boards(self, us):
+        """
+        CONCRETE
+        Helper function to print our boards if we're not an AI player
+        """
+        if not isinstance(us, AIPlayer):
+            os.system('clear')
+            us.display_boards()
+            us.display_tboards()
 
 
 class AirStrike(Powerup):
@@ -73,60 +102,33 @@ class AirStrike(Powerup):
         """
         Hits the entire row and column of the powerup
         """
-        # error case, we should never be hit twice
-        if self.hit:
-            # using NameError because ValueError is caught later
-            raise NameError("Powerup hit twice")
-
-        # update tracking board with our original hit
-        us.check_result("Hit", row, col)
-
-        # tell the user what's going on before we do the animation (conditional on AIPlayer)
-        self.print_hitme(us)
+        # run common prefix code
+        super().init_do_power(row, col, us)
 
         # run through the cols
         for col_iter in range(GRID_SIZE):
-            # skip over col_iter == col to avoid double shooting
-            if col_iter == col:
-                continue
-
             # shoot with constant row
             result = opponent.board.receive_attack(row, col_iter, opponent, us)
 
-            # clear the screen
-            if not isinstance(us, AIPlayer): # this "not isinstance" junk could be a variable
-                os.system('clear')
-            
             # update our tracking board accordingly
             us.check_result(result, row, col_iter)
 
             # print the boards if us is not an AIPlayer
-            if not isinstance(us, AIPlayer):
-                us.display_boards()
-                us.display_tboards()
+            self.print_boards(us)
 
             # pause for dramatic effect
             sleep(Powerup.delay)
 
         # run through rows
         for row_iter in range(GRID_SIZE):
-            # skip over row_iter == row to avoid double shooting
-            if row_iter == row:
-                continue
-
             # shoot with constant col
             result = opponent.board.receive_attack(row_iter, col, opponent, us)
 
-            # clear the screen
-            if not isinstance(us, AIPlayer):
-                os.system('clear')
-            
             # update our tracking board accordingly
             us.check_result(result, row_iter, col)
 
             # print the boards
-            us.display_boards()
-            us.display_tboards()
+            self.print_boards(us)
 
             # pause for dramatic effect
             sleep(Powerup.delay)
@@ -146,8 +148,14 @@ class DoubleShot(Powerup):
         """
         Gives the player that shot it another turn
         """
-        
-        # error case, we should never be hit twice
+        # run common prefix code
+        super().init_do_power(row, col, us)
+
+        # I mean just take another turn
+            # downside to this is whatever we hit on the double turn will NOT
+            # be displayed after we hit it. Will ALWAYS display that we hit
+            # a Double Shot at the very end of the turn.
+        us.take_turn(opponent)
 
 class Bomb(Powerup):
     def __init__(self):
@@ -161,16 +169,8 @@ class Bomb(Powerup):
         """
         Hits a 3x3 area around the powerup
         """
-        
-        # error case, we should never be hit twice
-        if self.hit:
-            raise NameError("Powerup hit twice")
-
-        # update tracking board with our original hit
-        us.check_result("Hit", row, col)
-
-        # print that we hit (conditional on if we're an AIPlayer)
-        self.print_hitme(us)
+        # run common prefix code
+        super().init_do_power(row, col, us)
 
         # define bomb_size
             # the intention is to make this be a user-configurable value later
@@ -188,8 +188,8 @@ class Bomb(Powerup):
 
                     # check the result and print it accordingly
                     us.check_result(result, row + i, col + j)
-                    if not isinstance(us, AIPlayer):
-                        os.system('clear')
-                        us.display_boards()
-                        us.display_tboards()
-                        sleep(Powerup.delay)
+
+                    # print the boards
+                    self.print_boards(us)
+                    # pause for dramatic effect
+                    sleep(Powerup.delay)
