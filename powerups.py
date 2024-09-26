@@ -146,7 +146,8 @@ class DoubleShot(Powerup):
         """
         Gives the player that shot it another turn
         """
-        pass
+        
+        # error case, we should never be hit twice
 
 class Bomb(Powerup):
     def __init__(self):
@@ -171,9 +172,15 @@ class Bomb(Powerup):
         # print that we hit (conditional on if we're an AIPlayer)
         self.print_hitme(us)
 
-        # Loop through a 3x3 with (row, col) at the center
-        for i in range(-1, 2):
-            for j in range(-1, 2):
+        # define bomb_size
+            # the intention is to make this be a user-configurable value later
+        bomb_size = 3
+        if bomb_size % 2 == 0:
+            bomb_size += 1
+
+        # Loop through an NxN with (row, col) at the center
+        for i in range(-(bomb_size//2), bomb_size//2 + 1):
+            for j in range(-(bomb_size//2), bomb_size//2 + 1):
                 # make sure we're in bounds
                 if 0 <= row + i < GRID_SIZE and 0 <= col + j < GRID_SIZE:
                     # hit the spot on the board

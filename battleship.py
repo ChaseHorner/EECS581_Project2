@@ -16,7 +16,7 @@ from player import Player
 from ai import AIPlayer
 from board import Board
 from ship import Ship
-from powerup import *
+from powerups import *
 
 from globals import *
 from utils import *
