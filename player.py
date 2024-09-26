@@ -15,8 +15,6 @@ import random
 
 from utils import *
 
-from globals import *
-
 # Player class to manage player turns
 class Player:
     def __init__(self, name):
@@ -34,7 +32,7 @@ class Player:
                 row = int(target[1:]) - 1
 
                 if 0 <= col < GRID_SIZE and 0 <= row < GRID_SIZE:
-                    result = opponent.board.receive_attack(row, col, opponent, self)
+                    result = opponent.board.receive_attack(row, col, self, opponent)
                     ret = result
                     if result == "Already attacked this spot.":
                         print(result)

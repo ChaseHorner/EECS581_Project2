@@ -9,8 +9,8 @@ Collaborators/Other Sources: NONE
 # Import abstract base classes
 from abc import ABC, abstractmethod
 
+from utils import *
 
-from globals import *
 import os
 from time import sleep
 
@@ -55,6 +55,7 @@ class Powerup(ABC):
         if not isinstance(us, AIPlayer):
             # print out the thing and wait a sec
             print(f"You hit a{self.an_char} {self.name} Powerup!!")
+            # just regular sleep, don't need to check if we're not an AI rn
             sleep(Powerup.long_delay)
 
     def init_do_power(self, row, col, us):
@@ -85,6 +86,14 @@ class Powerup(ABC):
             os.system('clear')
             us.display_boards()
             us.display_tboards()
+
+    def sleep_if_not_ai(self, delay, us):
+        """
+        CONCRETE
+        Helper function to sleep only if we're not an AIPlayer
+        """
+        if not isinstance(us, AIPlayer):
+            sleep(delay)
 
 
 class AirStrike(Powerup):
@@ -117,7 +126,7 @@ class AirStrike(Powerup):
             self.print_boards(us)
 
             # pause for dramatic effect
-            sleep(Powerup.delay)
+            self.sleep_if_not_ai(Powerup.delay, us)
 
         # run through rows
         for row_iter in range(GRID_SIZE):
@@ -131,10 +140,12 @@ class AirStrike(Powerup):
             self.print_boards(us)
 
             # pause for dramatic effect
-            sleep(Powerup.delay)
+            self.sleep_if_not_ai(Powerup.delay, us)
 
-        sleep(Powerup.long_delay)
+        
+        self.sleep_if_not_ai(Powerup.long_delay, us)
 
+        return f"Hit a{self.an_char} {self.name} Powerup!"
 
 class DoubleShot(Powerup):
     def __init__(self):
@@ -151,11 +162,14 @@ class DoubleShot(Powerup):
         # run common prefix code
         super().init_do_power(row, col, us)
 
-        # I mean just take another turn
-            # downside to this is whatever we hit on the double turn will NOT
-            # be displayed after we hit it. Will ALWAYS display that we hit
-            # a Double Shot at the very end of the turn.
-        us.take_turn(opponent)
+        # define blank prepend result for AI players so we can display whether
+        # they hit a double shot or not
+        result = ""
+        if isinstance(us, AIPlayer):
+            result = f"Hit a{self.an_char} {self.name} Powerup!\n"
+        
+        # I mean just take another turn and return its result string
+        return result + us.take_turn(opponent)
 
 class Bomb(Powerup):
     def __init__(self):
@@ -174,7 +188,7 @@ class Bomb(Powerup):
 
         # define bomb_size
             # the intention is to make this be a user-configurable value later
-        bomb_size = 3
+        bomb_size = 5
         if bomb_size % 2 == 0:
             bomb_size += 1
 
@@ -192,4 +206,9 @@ class Bomb(Powerup):
                     # print the boards
                     self.print_boards(us)
                     # pause for dramatic effect
-                    sleep(Powerup.delay)
+                    self.sleep_if_not_ai(Powerup.delay, us)
+
+        # sleep for effect again
+        self.sleep_if_not_ai(Powerup.long_delay, us)
+        return f"Hit a{self.an_char} {self.name} Powerup!"
+

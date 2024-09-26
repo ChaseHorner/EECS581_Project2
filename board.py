@@ -8,7 +8,7 @@ Output:
 Collaborators/Other Sources: NONE
 """
 
-from globals import *
+from utils import *
 
 # Board class to handle ship placement and attacks
 class Board:
@@ -80,11 +80,11 @@ class Board:
             # check for a powerup hit
             for powerup in self.powerups:
                 if [row, col] == powerup.coordinates:
-                    # have to flip opponent and us because they hit the powerup
-                    powerup.do_power(row, col, opponent, us)
+                    # do the powerup
+                    result = powerup.do_power(row, col, us, opponent)
                     powerup.hit = True
                     # return that we hit! (an_char is "" or "n")
-                    return f"Hit a{powerup.an_char} {powerup.name} Powerup!"
+                    return result
 
         # if we hit a water tile, we've missed
         elif self.grid[row][col] == '~':

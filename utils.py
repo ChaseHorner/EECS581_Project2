@@ -1,4 +1,7 @@
-from globals import *
+# global variable definitions
+GRID_SIZE = 10
+COLUMN_LETTERS = 'ABCDEFGHIJ'
+MAX_SHIPS = 5
 
 def letter_to_index(letter):
     return COLUMN_LETTERS.index(letter.upper())

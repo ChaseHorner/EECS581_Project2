@@ -18,7 +18,6 @@ from board import Board
 from ship import Ship
 from powerups import *
 
-from globals import *
 from utils import *
 
 # Main game loop

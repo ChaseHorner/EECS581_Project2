@@ -13,7 +13,6 @@ import random
 
 from player import Player
 
-from globals import *
 from utils import *
 
 class AIPlayer(Player):
@@ -36,14 +35,14 @@ class AIPlayer(Player):
         self.previous_result = result
         self.previous_shot = (row, col)
 
-        print(f"AI targeted ({index_to_letter(col)}, {row + 1}) | RESULT = {result}")
-        time.sleep(1.5)
         if "Hit" in result:
             self.tracking_board[row][col] = 'X'  # Mark hit
         elif "Miss" in result:
             self.tracking_board[row][col] = 'O'  # Mark miss
         else:
             print("Invalid AI input. Try again.")
+
+        return f"AI targeted ({index_to_letter(col)}, {row + 1}) | RESULT = {result}"
     
     def _get_shot_coord(self, opponent):
         """ Internal function to calculate coord that AI will fire at
