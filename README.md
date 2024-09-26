@@ -49,6 +49,15 @@ This is a Battleship game where two players face off on 10x10 boards. Each playe
 ### **Opponent Board:**
 - Players track their shots on their opponent’s board, showing hits and misses.
 
+### **Icon Key:**
+- ~: Water Tile
+- O: Miss
+- X: Hit
+- S: Ship
+- A: Air Strike Powerup
+- D: Double Shot Powerup
+- B: Bomb Powerup
+
 ---
 
 ## **How to Run the Game**
@@ -63,7 +72,7 @@ This is a Battleship game where two players face off on 10x10 boards. Each playe
     ```
 3. Run the main script:
     ```bash
-    python3 main.py
+    python3 battleship.py
     ```
 4. Follow the in-game prompts to choose the number of ships and place them.
 5. Take turns with another player firing shots at each other's boards until the game is won.

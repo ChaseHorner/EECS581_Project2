@@ -8,9 +8,7 @@ Output:
 Collaborators/Other Sources: NONE
 """
 
-GRID_SIZE = 10
-COLUMN_LETTERS = 'ABCDEFGHIJ'
-MAX_SHIPS = 5
+from globals import *
 
 # Board class to handle ship placement and attacks
 class Board:
@@ -58,14 +56,20 @@ class Board:
         self.powerups.append(powerup)
         return True
 
-    def receive_attack(self, row, col):
+    def receive_attack(self, row, col, us, opponent):
         """This method allows for a ship on a board to be attacked"""
+
+        # define what letters we can hit
         hit_letters = ['S']
         for powerup in self.powerups:
             hit_letters.append(powerup.variety)
 
+        # if we hit one
         if self.grid[row][col] in hit_letters:
+            # mark it as such
             self.grid[row][col] = 'X'  # Hit
+
+            # check for a ship hit
             for ship in self.ships:
                 if (row, col) in ship.coordinates:
                     ship.hits += 1
@@ -73,11 +77,16 @@ class Board:
                         return "Hit! Ship sunk!"
                     return "Hit!"
             
+            # check for a powerup hit
             for powerup in self.powerups:
                 if [row, col] == powerup.coordinates:
+                    # have to flip opponent and us because they hit the powerup
+                    powerup.do_power(row, col, opponent, us)
                     powerup.hit = True
-                    return f"Hit a {powerup.variety} Powerup!"
+                    # return that we hit! (an_char is "" or "n")
+                    return f"Hit a{powerup.an_char} {powerup.name} Powerup!"
 
+        # if we hit a water tile, we've missed
         elif self.grid[row][col] == '~':
             self.grid[row][col] = 'O'  # Miss
             return "Miss!\n"

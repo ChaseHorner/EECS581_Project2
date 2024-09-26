@@ -16,17 +16,14 @@ from player import Player
 from ai import AIPlayer
 from board import Board
 from ship import Ship
-from powerup import Powerup
+from powerup import *
 
-# Constants
-GRID_SIZE = 10
-COLUMN_LETTERS = 'ABCDEFGHIJ'
-MAX_SHIPS = 5
-
+from globals import *
 from utils import *
 
 # Main game loop
 def play_game():
+    os.system('clear')
     print("Welcome to Battleship!")
     player1 = Player("Player 1")
 
@@ -86,13 +83,6 @@ def play_game():
             if player.name == "Player 2":
                 os.system('clear')
                 print("Switching to Player 2's turn...")
-                time.sleep(2)
-                while True:
-                    key = input("Player 2, press Enter to continue...")
-                    if key ==  "":
-                        break
-                    else:
-                        print("Invalid input. Please press Enter to continue...")
 
             print(f"{player.name}, place your ships!")
             placement = input(f"Random or Manual ship placement (R or M): ").upper()    # Allows Player 1 to place ships randomly
@@ -125,7 +115,7 @@ def play_game():
                             if player.board.place_ship(ship, row, col, orientation):
                                 print(f"{player.name}'s board after placing ship of size {size}:")
                                 print_grid(player.board.grid)  # Print the board after each placement
-                                time.sleep(2)
+                                time.sleep(1)
                                 break
                             else:
                                 print("Invalid ship placement. Try again.")
@@ -134,33 +124,52 @@ def play_game():
 
     # Powerup placement if applicable
     if do_powerups:
-        powerups_p1 = [Powerup("B"), Powerup("D"), Powerup("T")]
-        powerups_p2 = [Powerup("B"), Powerup("D"), Powerup("T")]
-        player1.place_powerups(powerups_p1)
-        player2.place_powerups(powerups_p2)
+        for player in [player1, player2]:
+            # Define the powerups to be used
+            powerups = [AirStrike(), DoubleShot(), Bomb()]
+            # Place them randomly
+            player.place_powerups(powerups)
 
     # Game loop
+    result = None
     while True:
-        time.sleep(.5)
+        # Transition to player 1
         os.system('clear')
+        if result: # if first loop, don't print player 2's nonexistant result
+            print(result)
+        input("Player 1 press enter...")
+        os.system('clear')
+
+        # Player 1's turn
         if not isinstance(player1, AIPlayer):
             player1.display_boards()
             player1.display_tboards()
-        player1.take_turn(player2)
-        time.sleep(1.5)
-        os.system('clear')  
+        result = player1.take_turn(player2)
+
+        # Check if that turn ended the game
         if player2.board.all_ships_sunk():
+            os.system('clear')
             player1.display_boards()
             player1.display_tboards()
             print(f"{player1.name} wins!")
             break
+
+
+        # Transition to player 2
+        os.system('clear')
+        print(result)
+        input("Player 2 press enter...")
+        os.system('clear')
+
+        # Player 2's turn
         if not isinstance(player2, AIPlayer):
             player2.display_boards()
             player2.display_tboards()
-        player2.take_turn(player1)
-        time.sleep(1.5)
-        os.system('clear')  
+        result = player2.take_turn(player1)
+
+        # Check if that turn ended the game
         if player1.board.all_ships_sunk():
+            os.system('clear')
             player2.display_boards()
             player2.display_tboards()
             print(f"{player2.name} wins!")

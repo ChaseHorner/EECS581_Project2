@@ -15,9 +15,7 @@ import random
 
 from utils import *
 
-GRID_SIZE = 10
-COLUMN_LETTERS = 'ABCDEFGHIJ'
-MAX_SHIPS = 5
+from globals import *
 
 # Player class to manage player turns
 class Player:
@@ -28,28 +26,31 @@ class Player:
 
     def take_turn(self, opponent):
         """This method implements the game logic for a player to take their turn"""
+        ret = ""
         while True:
             try:
-                time.sleep(1)
                 target = input(f"{self.name}, enter target (e.g. A1): ")
                 col = letter_to_index(target[0])
                 row = int(target[1:]) - 1
 
                 if 0 <= col < GRID_SIZE and 0 <= row < GRID_SIZE:
-                    result = opponent.board.receive_attack(row, col)
-                    print(result)  # Announce hit or miss
+                    result = opponent.board.receive_attack(row, col, opponent, self)
+                    ret = result
                     if result == "Already attacked this spot.":
+                        print(result)
                         print("Try again.")
                         continue  # Allow the player to take another turn
-                    elif "Hit" in result:
-                        self.tracking_board[row][col] = 'X'  # Mark hit
-                    elif "Miss" in result:
-                        self.tracking_board[row][col] = 'O'  # Mark miss
+                    
+                    # update our tracking board accordingly
+                    self.check_result(result, row, col)
+
                     break
                 else:
                     print("Invalid input. Try again.")
             except (ValueError, IndexError):
                 print("Invalid input. Please enter a valid coordinate (e.g., A1).")
+
+        return ret
 
     def display_tboards(self):
         print(f"{self.name}'s Tracking Board:")
@@ -84,4 +85,13 @@ class Player:
                 # Try placing the powerup there
                 success = self.board.place_powerup(powerup, row, col)
             
+    def check_result(self, result, row, col):
+        """
+        Helper method to check results of shots
+        """
+        if "Hit" in result:
+            self.tracking_board[row][col] = 'X'  # Mark hit
+        elif "Miss" in result:
+            self.tracking_board[row][col] = 'O'  # Mark miss
+        # silently fail on everything else
 

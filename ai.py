@@ -13,6 +13,7 @@ import random
 
 from player import Player
 
+from globals import *
 from utils import *
 
 class AIPlayer(Player):
@@ -30,7 +31,7 @@ class AIPlayer(Player):
         """Same variable used in Player, but overridden to automate coord selection
         """
         row, col = self._get_shot_coord(opponent)
-        result = opponent.board.receive_attack(row, col)
+        result = opponent.board.receive_attack(row, col, self, opponent)
 
         self.previous_result = result
         self.previous_shot = (row, col)
@@ -61,11 +62,11 @@ class AIPlayer(Player):
     def _easy_shot(self):
         """Internal function for calculating shot if difficulty is "easy" (or 1)
         """
-        row = random.choice(range(0,10))
-        col = random.choice(range(0,10))
+        row = random.choice(range(0,GRID_SIZE))
+        col = random.choice(range(0,GRID_SIZE))
         while self.tracking_board[row][col] != "~":
-            row = random.choice(range(0,10))
-            col = random.choice(range(0,10))
+            row = random.choice(range(0,GRID_SIZE))
+            col = random.choice(range(0,GRID_SIZE))
 
         return row, col
 
@@ -124,8 +125,8 @@ class AIPlayer(Player):
         #access opponents board
         opponent_board = opponent.board
         #iterate through all rows and columns
-        rows = range(10)
-        cols = range(10)        
+        rows = range(GRID_SIZE)
+        cols = range(GRID_SIZE)        
         for row in rows:
             for col in cols:
                 #If there's a ship, return those coordinates (it will then be "hit" and not a "S" next time)

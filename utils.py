@@ -1,6 +1,4 @@
-GRID_SIZE = 10
-COLUMN_LETTERS = 'ABCDEFGHIJ'
-MAX_SHIPS = 5
+from globals import *
 
 def letter_to_index(letter):
     return COLUMN_LETTERS.index(letter.upper())
