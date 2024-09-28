@@ -54,9 +54,9 @@ This is a Battleship game where two players face off on 10x10 boards. Each playe
 - O: Miss
 - X: Hit
 - S: Ship
-- A: Air Strike Powerup
-- D: Double Shot Powerup
-- B: Bomb Powerup
+- A: Air Strike Powerup - hit the entire row/column of the powerup
+- D: Double Shot Powerup - take another turn
+- B: Bomb Powerup - hit a 3x3 area around the powerup
 
 ---
 
