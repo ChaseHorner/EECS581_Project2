@@ -3,8 +3,6 @@ Authors: Michael Stang, Zain W Ghosheh, Abdulahi Mohamed, Olufewa Alonge, Mahgou
 Date: 09-20-2024
 Assignment: EECS 581 Project 2
 Description: A class for representing the board
-Inputs: 
-Output:
 Collaborators/Other Sources: NONE
 """
 
