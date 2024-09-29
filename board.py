@@ -59,17 +59,17 @@ class Board:
     def receive_attack(self, row, col, us, opponent):
         """This method allows for a ship on a board to be attacked"""
 
-        # define what letters we can hit
+        # Define what letters we can hit
         hit_letters = ['S']
         for powerup in self.powerups:
             hit_letters.append(powerup.variety)
 
-        # if we hit one
+        # If we hit one
         if self.grid[row][col] in hit_letters:
-            # mark it as such
+            # Mark it as such
             self.grid[row][col] = 'X'  # Hit
 
-            # check for a ship hit
+            # Check for a ship hit
             for ship in self.ships:
                 if (row, col) in ship.coordinates:
                     ship.hits += 1
@@ -77,16 +77,16 @@ class Board:
                         return "Hit! Ship sunk!"
                     return "Hit!"
             
-            # check for a powerup hit
+            # Check for a powerup hit
             for powerup in self.powerups:
                 if [row, col] == powerup.coordinates:
-                    # do the powerup
+                    # Do the powerup
                     result = powerup.do_power(row, col, us, opponent)
                     powerup.hit = True
-                    # return that we hit! (an_char is "" or "n")
+                    # Return that we hit! (an_char is "" or "n")
                     return result
 
-        # if we hit a water tile, we've missed
+        # If we hit a water tile, we've missed
         elif self.grid[row][col] == '~':
             self.grid[row][col] = 'O'  # Miss
             return "Miss!\n"
