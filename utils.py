@@ -1,4 +1,4 @@
-# global variable definitions
+# Global variable definitions
 GRID_SIZE = 10
 COLUMN_LETTERS = 'ABCDEFGHIJ'
 MAX_SHIPS = 5
