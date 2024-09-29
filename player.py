@@ -3,8 +3,6 @@ Authors: Holden Vail, Michael Stang, Chase Horner, Zain W Ghosheh, Abdulahi Moha
 Date: 09-20-2024
 Assignment: EECS 581 Project 2
 Description: A class for each player
-Inputs: 
-Output:
 Collaborators/Other Sources: NONE
 """
 
