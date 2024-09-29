@@ -134,7 +134,7 @@ def play_game():
     while True:
         # Transition to player 1
         os.system('clear')
-        if result: # if first loop, don't print player 2's nonexistant result
+        if result: # If first loop, don't print player 2's nonexistant result
             print(result)
         input("Player 1 press enter...")
         os.system('clear')
@@ -152,7 +152,6 @@ def play_game():
             player1.display_tboards()
             print(f"{player1.name} wins!")
             break
-
 
         # Transition to player 2
         os.system('clear')
