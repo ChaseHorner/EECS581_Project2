@@ -75,8 +75,8 @@ class AIPlayer(Player):
 
         # Until we end up with a coord that hasn't been fired at, keep generating new coords
         while self.tracking_board[row][col] != "~":
-            row = random.choice(range(0,GRID_SIZE)) # Same as above
-            col = random.choice(range(0,GRID_SIZE))
+            row = random.choice(range(0,GRID_SIZE)) # Gets Row
+            col = random.choice(range(0,GRID_SIZE)) # Gets Column
 
         # Return the final result
         return row, col
@@ -173,13 +173,13 @@ class AIPlayer(Player):
     def _hard_shot(self, opponent):
         """Internal function for calculating shot if difficulty is "hard" (or 3)
         """
-        #access opponents board
+        # Access opponents board
         opponent_board = opponent.board
-        #iterate through all rows and columns
+        # Iterate through all rows and columns
         rows = range(GRID_SIZE)
         cols = range(GRID_SIZE)        
         for row in rows:
             for col in cols:
-                #If there's a ship, return those coordinates (it will then be "hit" and not a "S" next time)
+                # If there's a ship, return those coordinates (it will then be "hit" and not a "S" next time)
                 if opponent_board.grid[row][col] == 'S':
                     return(row, col)
