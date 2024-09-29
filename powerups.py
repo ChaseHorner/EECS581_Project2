@@ -11,17 +11,17 @@ from time import sleep
 # Import abstract base classes
 from abc import ABC, abstractmethod
 
-# grab our utils
+# Grab our utils
 from utils import *
 
 
-# need this to prevent printing when they hit a powerup
+# Need this to prevent printing when they hit a powerup
 from ai import AIPlayer
 
 # Powerup interface
 class Powerup(ABC):
 
-    # define delay lengths for all powerups
+    # Define delay lengths for all powerups
     long_delay = 1.5
     delay = .2
 
@@ -30,12 +30,13 @@ class Powerup(ABC):
     def __init__(self):
         self.coordinates = []
         self.hit = False
-        # variety and name to be implemented in subclasses
+        # Variety and name to be implemented in subclasses
         self.variety = None
         self.name = None
 
-        # funny case - when printing "Hit a {name} Powerup!", Air Strikes have a grammatical
-        # error (Hit a Air Strike Powerup!) -- to fix this, print an_char after "a"
+        # Funny case - when printing "Hit a {name} Powerup!"
+        # Air Strikes have a grammatical error (Hit a Air Strike Powerup!) -- to fix this
+            # print an_char after "a"
         self.an_char = ""
 
     @abstractmethod
@@ -52,11 +53,11 @@ class Powerup(ABC):
         Helper function to print to whoever hit us that we've been hit!
         """
 
-        # make sure we're not an AI
+        # Make sure we're not an AI
         if not isinstance(us, AIPlayer):
-            # print out the thing and wait a sec
+            # Print out the thing and wait a second
             print(f"You hit a{self.an_char} {self.name} Powerup!!")
-            # just regular sleep, don't need to check if we're not an AI rn
+            # Just regular sleep, don't need to check if we're not an AI right now
             sleep(Powerup.long_delay)
 
     def init_do_power(self, row, col, us):
@@ -64,17 +65,17 @@ class Powerup(ABC):
         CONCRETE
         Helper function to run at the start of do_power
         """
-        # error case, we should never be hit twice
+        # Error case, we should never be hit twice
         if self.hit:
             raise NameError("Powerup hit twice")
 
-        # update trackign board with our original hit
+        # Update trackign board with our original hit
         us.check_result("Hit", row, col)
 
-        # print that we hit (conditional on if we're an AIPlayer)
+        # Print that we hit (conditional on if we're an AIPlayer)
         self.print_hitme(us)
 
-        # print our boards now that they've been updated
+        # Print our boards now that they've been updated
         self.print_boards(us)
 
 
@@ -99,48 +100,48 @@ class Powerup(ABC):
 
 class AirStrike(Powerup):
     def __init__(self):
-        # run super constructor
+        # Run super constructor
         super().__init__()
-        # set variety to 'A' for air strike
+        # Set variety to 'A' for air strike
         self.variety = 'A'
         self.name = "Air Strike"
 
-        # need to be gramatically correct!!
+        # Need to be gramatically correct!!
         self.an_char = "n"
 
     def do_power(self, row, col, us, opponent):
         """
         Hits the entire row and column of the powerup
         """
-        # run common prefix code
+        # Run common prefix code
         super().init_do_power(row, col, us)
 
-        # run through the cols
+        # Run through the cols
         for col_iter in range(GRID_SIZE):
-            # shoot with constant row
+            # Shoot with constant row
             result = opponent.board.receive_attack(row, col_iter, opponent, us)
 
-            # update our tracking board accordingly
+            # Update our tracking board accordingly
             us.check_result(result, row, col_iter)
 
-            # print the boards if us is not an AIPlayer
+            # Print the boards if us is not an AIPlayer
             self.print_boards(us)
 
-            # pause for dramatic effect
+            # Pause for dramatic effect
             self.sleep_if_not_ai(Powerup.delay, us)
 
-        # run through rows
+        # Run through rows
         for row_iter in range(GRID_SIZE):
-            # shoot with constant col
+            # Shoot with constant col
             result = opponent.board.receive_attack(row_iter, col, opponent, us)
 
-            # update our tracking board accordingly
+            # Update our tracking board accordingly
             us.check_result(result, row_iter, col)
 
-            # print the boards
+            # Print the boards
             self.print_boards(us)
 
-            # pause for dramatic effect
+            # Pause for dramatic effect
             self.sleep_if_not_ai(Powerup.delay, us)
 
         
@@ -150,9 +151,9 @@ class AirStrike(Powerup):
 
 class DoubleShot(Powerup):
     def __init__(self):
-        # run super constructor
+        # Run super constructor
         super().__init__()
-        # set variety to 'D' for double shot
+        # Set variety to 'D' for double shot
         self.variety = 'D'
         self.name = "Double Shot"
 
@@ -160,11 +161,11 @@ class DoubleShot(Powerup):
         """
         Gives the player that shot it another turn
         """
-        # run common prefix code
+        # Run common prefix code
         super().init_do_power(row, col, us)
 
-        # define blank prepend result for AI players so we can display whether
-        # they hit a double shot or not
+        # Define blank prepend result for AI players so we can display whether
+            # they hit a double shot or not
         result = ""
         if isinstance(us, AIPlayer):
             result = f"Hit a{self.an_char} {self.name} Powerup!\n"
@@ -174,9 +175,9 @@ class DoubleShot(Powerup):
 
 class Bomb(Powerup):
     def __init__(self):
-        # run super constructor
+        # Run super constructor
         super().__init__()
-        # set variety to 'B' for bomb
+        # Set variety to 'B' for bomb
         self.variety = 'B'
         self.name = "Bomb"
 
@@ -184,11 +185,10 @@ class Bomb(Powerup):
         """
         Hits a 3x3 area around the powerup
         """
-        # run common prefix code
+        # Run common prefix code
         super().init_do_power(row, col, us)
 
-        # define bomb_size
-            # the intention is to make this be a user-configurable value later
+        # Define bomb_size
         bomb_size = 5
         if bomb_size % 2 == 0:
             bomb_size += 1
@@ -196,20 +196,20 @@ class Bomb(Powerup):
         # Loop through an NxN with (row, col) at the center
         for i in range(-(bomb_size//2), bomb_size//2 + 1):
             for j in range(-(bomb_size//2), bomb_size//2 + 1):
-                # make sure we're in bounds
+                # Make sure we're in bounds
                 if 0 <= row + i < GRID_SIZE and 0 <= col + j < GRID_SIZE:
-                    # hit the spot on the board
+                    # Hit the spot on the board
                     result = opponent.board.receive_attack(row + i, col + j, opponent, us)
 
-                    # check the result and print it accordingly
+                    # Check the result and print it accordingly
                     us.check_result(result, row + i, col + j)
 
-                    # print the boards
+                    # Print the boards
                     self.print_boards(us)
-                    # pause for dramatic effect
+                    # Pause for dramatic effect
                     self.sleep_if_not_ai(Powerup.delay, us)
 
-        # sleep for effect again
+        # Sleep for effect again
         self.sleep_if_not_ai(Powerup.long_delay, us)
         return f"Hit a{self.an_char} {self.name} Powerup!"
 
